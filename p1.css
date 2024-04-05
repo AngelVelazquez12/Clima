@@ -1,0 +1,83 @@
+/* General Styles */
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    background-image: url('https://wallpapercave.com/wp/wp5393061.jpg'); /* Cambia 'ruta/de/tu/imagen/fondo.jpg' por la ruta de tu imagen de fondo */
+    background-size: cover;
+}
+
+.container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+}
+
+.content {
+    max-width: 500px;
+    width: 100%;
+    padding: 20px;
+    text-align: center;
+    background-color: rgba(255, 255, 255, 0.9); /* Fondo blanco con transparencia */
+    border-radius: 10px; /* Bordes redondeados */
+	border: 1px solid #000000;
+}
+h1 {
+    text-align: center;
+    margin-top: 20px;
+    color: #333;
+}
+
+form {
+    text-align: center;
+    margin-top: 20px;
+}
+
+label {
+    display: block;
+    margin-bottom: 10px;
+}
+
+input[type="text"] {
+    padding: 5px;
+    width: 200px;
+    border: 1px solid #000000;
+    border-radius: 5px;
+    margin: 0 10px; /* Añadimos un margen a cada lado */
+}
+
+button {
+    padding: 8px 20px;
+    background-color: #023061;
+    color: #fff;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+button:hover {
+    background-color: #0056b3;
+}
+
+/* Centered Weather Data */
+#weatherData {
+    margin: 20px auto;
+    max-width: 400px;
+    text-align: center;
+    padding: 10px;
+    background-color: #fff;
+    border: 1px solid #000000;
+    border-radius: 5px;
+}
+
+/* Responsive Styles */
+@media only screen and (max-width: 600px) {
+    input[type="text"] {
+        width: 100%;
+    }
+
+    button {
+        width: 100%;
+    }
+}

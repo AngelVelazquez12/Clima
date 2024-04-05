@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="p1.css">
+    <title>Clima API</title>
+    <link rel="icon" href="https://png.pngtree.com/png-clipart/20231026/original/pngtree-nube-pixel-art-png-image_13436335.png">
+</head>
+<body>
+
+    <div class="container">
+        <div class="content">
+            <div class="navbar">
+                
+            </div>
+
+            <h1>Información del clima</h1>
+            <form id="cityForm">
+                <label for="cityInput">Entra el nombre de la ciudad:</label>
+                <input type="text" id="cityInput" name="cityInput">
+                <button type="submit">Obten el clima</button>
+            </form>
+            <div id="weatherData">
+                <!-- Aquí se mostrarán los datos del clima -->
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // Función para hacer la solicitud a la API y mostrar los datos
+        function fetchWeather(city) {
+            const apiKey = '64575b99f6f0af0945418e49d8863f70'; 
+            const apiUrl = `https://api.openweathermap.org/data/2.5/weather?q=${city}&appid=${apiKey}&units=metric&lang=es`;
+
+            fetch(apiUrl)
+                .then(response => response.json())
+                .then(data => {
+                    const weatherDataElement = document.getElementById('weatherData');
+                    const cityName = data.name;
+                    const temperature = data.main.temp;
+                    const weatherDescription = data.weather[0].description;
+                    const humidity = data.main.humidity;
+
+                    const weatherInfo = `
+                        <p>Ciudad: ${cityName}</p>
+                        <p>Temperatura: ${temperature}°C</p>
+                        <p>Descripción: ${weatherDescription}</p>
+                        <p>Humedad: ${humidity}%</p>
+                    `;
+                    weatherDataElement.innerHTML = weatherInfo;
+                })
+                .catch(error => {
+                    console.error('Error fetching weather data:', error);
+                    document.getElementById('weatherData').textContent = 'Error fetching weather data. Please try again later.';
+                });
+        }
+
+        // Event listener para el formulario
+        document.getElementById('cityForm').addEventListener('submit', function(event) {
+            event.preventDefault();
+            const cityInput = document.getElementById('cityInput').value.trim();
+            if (cityInput !== '') {
+                fetchWeather(cityInput);
+            }
+        });
+    </script>
+</body>
+</html>
